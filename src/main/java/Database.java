@@ -1,8 +1,8 @@
 //package videos;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 public class Database {
 	Video userVideo;
@@ -252,17 +252,17 @@ public class Database {
                                         "AND password = "
                                         + "'" + pass + "'";
 			ResultSet rs = stmt.executeQuery(sql);
-                        
+                        System.out.println("\tThis rs: " + rs);
                 try {
                     if(rs.getObject("username") == null) {
-                            
                         return false;
                     }
-                    else
+                    else {
                         
                     
-                } catch (SQLException ex) {
-                    return false;
+                        }
+                } catch (Exception e) {
+                    
                 }
 			
                 } catch(Exception e) {
@@ -270,5 +270,14 @@ public class Database {
                 }
             return true;
         }
+        
+        public static void main(String[] args) {
+            System.out.println("Starting db test");
+            Database db = new Database();
+            db.connect();
+            System.out.println(db.checkUser("brady", "mordor"));
+            db.disconnect();
+        }
+        
 }
 
