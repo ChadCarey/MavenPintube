@@ -3,6 +3,8 @@
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 
@@ -68,6 +70,23 @@ public class Database {
 		}
 	}
 	
+        /**
+         * Loads a video object and passes it on to addVideo(Video v);
+         * @param title
+         * @param videoID
+         * @param username 
+         */
+        public void addVideo(String title, String videoID, String username) {
+            try {
+                sql = "SELECT id FROM user WHERE username='" + username + "'";
+                ResultSet rs = stmt.executeQuery(sql);
+                int userID = rs.getInt("id");
+                addVideo(new Video(userID, title, videoID));
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
 	public void addVideo(Video userVideo)
 	{		
 		System.out.println("Adding video to database..");
@@ -117,8 +136,9 @@ public class Database {
 		{		
 			sql = "SELECT v.id, user_id, video, category_id, title FROM videos v";
                         sql += " JOIN user u ON u.id = v.user_id " + "WHERE username='" + user + "'";
+                        System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
-			
+			System.out.println("Obtained results");
 			
 			//STEP 5: Extract data from result set
 			while(rs.next())
@@ -140,8 +160,13 @@ public class Database {
                                 videos.add(new Video(userID, title, link));
 			}
 			rs.close();
+                } catch (SQLException e) {
+                    System.out.println("ERROR loading user videos e=1\n" + e.getMessage());
+                    e.printStackTrace();
+                    
                 } catch (Exception e) {
-                    System.out.println("ERROR loading user videos");
+                    System.out.println("ERROR loading user videos e=2\n" + e.getMessage());
+                    e.printStackTrace();
                 }
             
             return videos;

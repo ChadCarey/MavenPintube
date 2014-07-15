@@ -53,9 +53,16 @@ public class PinTubeUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String user = request.getParameter("user");
-        System.out.println("User="+user);
+        String user = (String)request.getSession().getAttribute("user");
+        System.out.println("USER==="+user);
+        if (user == null) {
+            user = "brady";
+            System.out.println("Resetting user to default\n\tUSER==="+user);
+        }
+        
+        database.connect();
         List<Video> results = database.getUserVideos(user);
+        database.disconnect();
         
         Writer out = response.getWriter();
         

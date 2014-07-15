@@ -25,10 +25,10 @@ function getUserVideos()
 }
 
 
-function addVideo(video)
+function addVideo(videoTitle, videoID)
 {
-    $.get('PinTubeUserServlet',
-    {'video' : video},
+    $.get('AddVideoServlet',
+    { 'videoTitle' : videoTitle, 'videoID' : videoID},
     function(data/*resulting data*/)
     {
         document.getElementById("main").innerHTML = data;
