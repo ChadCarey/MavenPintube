@@ -92,7 +92,9 @@ public class SearchYouTube extends HttpServlet {
             out.write("allowfullscreen></iframe>");
             out.write("</div>");
             out.write("</div>");
-            out.write("</div>");
+            out.write("</div><br/>");
+            out.write("<input type='button' value='Pin Video' onclick='pinVideo(" 
+                    + video.getId() + ")'/>");
         }
     }
 
