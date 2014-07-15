@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Pintube</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -34,7 +34,7 @@
   			<span class="input-group-addon">Password</span>
   			<input type="password" class="form-control" name="pass"/>
 		</div>
-		<div class="input-group" style="width:330px; padding: 0px 20px">
+		<div class="input-group" style="width:330px; padding: 5px 20px 0px">
   			<span class="input-group-addon">Confirm</span>
   			<input type="password" class="form-control" name="pass2"/>
 		</div></form>
