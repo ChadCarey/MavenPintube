@@ -5,6 +5,9 @@ import java.sql.*;
 //import java.util.logging.Logger;
 
 public class Database {
+    
+        private final String DB_NAME = "java"; /*THIS MUST BE CHANGED TO THE NAME OF YOUR DATABASE*/
+    
 	Video userVideo;
 	
 	// Variables to connect to database
@@ -35,8 +38,6 @@ public class Database {
 			database = "java";
 			DB_URL = "jdbc:mysql://" + host + ":" + port + "/" + appname;
 		}
-		
-		//LocalHost
 		else
 		{
 
@@ -44,7 +45,7 @@ public class Database {
 			user = "java";
 			pass = "mordor";
 			
-			DB_URL = "jdbc:mysql://localhost/JAVA";
+			DB_URL = "jdbc:mysql://localhost/" + DB_NAME;
 		}
 		
 		//STEP 2: Register JDBC driver
@@ -59,7 +60,9 @@ public class Database {
 		}
 		catch(Exception e)
 		{
+                    System.out.println("Failed to connect to the database");
 			e.printStackTrace();
+                        System.exit(-1);
 		}
 	}
 	
