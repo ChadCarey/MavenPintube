@@ -93,7 +93,7 @@ public class SearchYouTube extends HttpServlet {
             out.write("</div>");
             out.write("</div>");
             out.write("</div><br/>");
-            out.write("<input type='button' value='Pin Video' onclick='pinVideo(" 
+            out.write("<input type='button' value='Pin Video' onclick='addVideo(" 
                     + video.getId() + ")'/>");
         }
     }
@@ -109,7 +109,7 @@ public class SearchYouTube extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**

@@ -1,6 +1,8 @@
 //package videos;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 
@@ -107,6 +109,44 @@ public class Database {
 		}
 	}
 	
+        
+        public List<Video> getUserVideos(String user) {
+            List<Video> videos = new ArrayList<Video>();
+            
+            try
+		{		
+			sql = "SELECT v.id, user_id, video, category_id, title FROM videos v";
+                        sql += " JOIN user u ON u.id = v.user_id " + "WHERE username='" + user + "'";
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			
+			//STEP 5: Extract data from result set
+			while(rs.next())
+			{
+				//Retrieve by column name
+				int id  = rs.getInt("id");
+				int userID  = rs.getInt("user_id");
+				int categoryID = rs.getInt("category_id");
+				String link = rs.getString("video");
+				String title = rs.getString("title");
+		
+				//Display values
+				System.out.print("ID: " + id);
+				System.out.print(", User ID: " + userID);
+				System.out.print(" , Category ID: " + categoryID);
+				System.out.println(", Title: " + title);
+				System.out.println("Video Link: " + link);
+                                
+                                videos.add(new Video(userID, title, link));
+			}
+			rs.close();
+                } catch (Exception e) {
+                    System.out.println("ERROR loading user videos");
+                }
+            
+            return videos;
+        }
+        
 	public void displayAllVideos()
 	{
 		try
@@ -279,6 +319,7 @@ public class Database {
             Database db = new Database();
             db.connect();
             System.out.println(db.checkUser("brady", "mordor"));
+            db.getUserVideos("brady");
             db.disconnect();
         }
         

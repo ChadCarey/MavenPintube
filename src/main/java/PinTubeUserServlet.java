@@ -6,6 +6,8 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +24,11 @@ import javax.servlet.http.HttpSession;
 public class PinTubeUserServlet extends HttpServlet {
 
     private UserController userController;
+    private Database database;
     
     public PinTubeUserServlet() {
         userController = new UserController();
+        database = new Database();
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -49,6 +53,31 @@ public class PinTubeUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String user = request.getParameter("user");
+        System.out.println("User="+user);
+        List<Video> results = database.getUserVideos(user);
+        
+        Writer out = response.getWriter();
+        
+        for(Video video : results) {
+            
+            out.write("<div class='.col-md-12'");
+            out.write("<div class='row'>");
+            out.write("<div class='span6'>");
+            out.write("<h4>" + video.getTitle() + "</h4>");
+            out.write("</div>");
+            
+            out.write("<div class='span6'>");
+            out.write("<iframe width='320' ");
+            out.write("height='180' ");
+            out.write("src='//www.youtube.com/embed/");
+            out.write(video.getLink());
+            out.write("'frameborder='0' ");
+            out.write("allowfullscreen></iframe>");
+            out.write("</div>");
+            out.write("</div>");
+            out.write("</div><br/>");
+        }
     }
 
     /**

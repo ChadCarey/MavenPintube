@@ -1,5 +1,3 @@
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,21 +11,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author chad
  */
-@WebServlet(urlPatterns = {"/LogInServlet"})
-public class LogInServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/AddVideoServlet"})
+public class AddVideoServlet extends HttpServlet {
 
-    private static UserController userController;
+    private Database database;
     
-    public LogInServlet() {
-        if(userController == null) {
-            userController = new UserController();
-        }
+    public AddVideoServlet() {
+        database = new Database();
     }
     
     /**
@@ -43,6 +38,20 @@ public class LogInServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        try {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AddVideoServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AddVideoServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        } finally {
+            out.close();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,17 +81,8 @@ public class LogInServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String user = request.getParameter("user");
-        String pass = request.getParameter("pass");
-        if(userController.validLogin(user, pass)) {
-            HttpSession ses = request.getSession();
-            ses.setAttribute("user", user);
-            ses.setAttribute("pass", pass);
-            System.err.println("Forwarding page");
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        } else {
-            request.setAttribute("invalid", "Invalid username / password");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        }
+        String video = request.getParameter("video");
+        
     }
 
     /**
@@ -94,5 +94,5 @@ public class LogInServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
+
 }

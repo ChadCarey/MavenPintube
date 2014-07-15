@@ -16,9 +16,20 @@ function search()
 
 function getUserVideos()
 {
-    $.get('YouTubeUserServlet',
+    $.get('PinTubeUserServlet',
     {'req' : 'getUserVideos'},
-    function(data/*resulting data*/,status,xhr/*xmlobject*/)
+    function(data/*resulting data*/)
+    {
+        document.getElementById("main").innerHTML = data;
+    } );
+}
+
+
+function addVideo(video)
+{
+    $.get('PinTubeUserServlet',
+    {'video' : video},
+    function(data/*resulting data*/)
     {
         document.getElementById("main").innerHTML = data;
     } );
