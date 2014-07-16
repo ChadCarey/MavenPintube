@@ -4,6 +4,7 @@ function search()
     var search = $('[name=searchQ]').val();
     if (search == "") {
         document.getElementById("main").innerHTML = "";
+        getUserVideos();
         return;
     }
     $.get('SearchYouTube',
@@ -27,8 +28,8 @@ function getUserVideos()
 
 function addVideo(videoTitle, videoID)
 {
-    $.get('AddVideoServlet',
-    { 'videoTitle' : videoTitle, 'videoID' : videoID},
+    $.post('AddVideoServlet',
+    { 'videoTitle' : videoTitle, 'videoID' : videoID },
     function(data/*resulting data*/)
     {
         document.getElementById("main").innerHTML = data;

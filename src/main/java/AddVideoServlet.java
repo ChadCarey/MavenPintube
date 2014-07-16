@@ -66,17 +66,7 @@ public class AddVideoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String videoID = request.getParameter("videoID");
-        System.out.println("videoID");
-        String title = request.getParameter("videoTitle");
-        System.out.println("videoTitle");
-        String username = (String) request.getSession().getAttribute("user");
-        System.out.println("username");
-        
-        database.connect();
-        database.addVideo(title, videoID, username);
-        database.disconnect();
+       
     }
 
     /**
@@ -90,9 +80,18 @@ public class AddVideoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = request.getParameter("user");
-        String video = request.getParameter("video");
+        System.out.println("Starting addVideoservlet");
         
+        String videoID = request.getParameter("videoID");
+        System.out.println("videoID= " + videoID);
+        String title = request.getParameter("videoTitle");
+        System.out.println("videoTitle= " + title);
+        String username = (String) request.getSession().getAttribute("user");
+        System.out.println("username="+ username);
+        
+        database.connect();
+        database.addVideo(title, videoID, username);
+        database.disconnect();
     }
 
     /**

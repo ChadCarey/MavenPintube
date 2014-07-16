@@ -78,12 +78,18 @@ public class Database {
          */
         public void addVideo(String title, String videoID, String username) {
             try {
+                System.out.println("Getting user ID");
                 sql = "SELECT id FROM user WHERE username='" + username + "'";
+                System.out.println(sql);
                 ResultSet rs = stmt.executeQuery(sql);
+                System.out.println("Getting ID from response");
                 int userID = rs.getInt("id");
+                System.out.println("ID: " + userID);
                 addVideo(new Video(userID, title, videoID));
             } catch (SQLException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                System.out.println("ERROR");
             }
         }
         
