@@ -83,13 +83,14 @@ public class Database {
                 System.out.println(sql);
                 ResultSet rs = stmt.executeQuery(sql);
                 System.out.println("Getting ID from response");
+                System.out.println("Cointans next: " + rs.next());
                 int userID = rs.getInt("id");
                 System.out.println("ID: " + userID);
                 addVideo(new Video(userID, title, videoID));
             } catch (SQLException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception e) {
-                System.out.println("ERROR");
+                System.out.println("ERROR 0");
             }
         }
         
@@ -101,15 +102,18 @@ public class Database {
 			sql = "INSERT INTO videos (user_id, video, title) VALUES ("
 					+ userVideo.userID + ", " + "'" + userVideo.link + "'" + ", "
 					+ "'" + userVideo.title + "'" + ")";
+                        System.out.println(sql);
 			stmt.executeUpdate(sql);
 			
 			System.out.println("Video succesfully added!");
 		}
 		catch(SQLException se){
 		      //Handle errors for JDBC
+                    System.out.println("ERROR 1");
 			se.printStackTrace();
 		}catch(Exception e){
 		      //Handle errors for Class.forName
+                    System.out.println("ERROR 2");
 			e.printStackTrace();
 		}
 

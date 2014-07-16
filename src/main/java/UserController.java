@@ -12,11 +12,12 @@
  */
 class UserController {
 
-    private Database database;
+    private static Database database;
     
     public UserController() {
-        database = new Database();
-        database.connect();
+        if (database == null) {
+         database = new Database();   
+        }
     }
     
     /**
@@ -26,7 +27,10 @@ class UserController {
      * @return boolean
      */
     public boolean validLogin(String user, String pass) {
-        return database.checkUser(user, pass);
+        database.connect();
+        boolean check = database.checkUser(user, pass);
+        database.disconnect();
+        return check;
     }
 
     /**
@@ -45,7 +49,9 @@ class UserController {
      * @return 
      */
     public boolean addUser(String user, String pass) {
+        database.connect();
         database.addUser(user, pass);
+        database.disconnect();
         return true;
     }
     

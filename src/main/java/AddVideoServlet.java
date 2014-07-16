@@ -19,10 +19,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/AddVideoServlet"})
 public class AddVideoServlet extends HttpServlet {
 
-    private Database database;
+    private static Database database;
     
     public AddVideoServlet() {
-        database = new Database();
+        if (database == null) {
+         database = new Database();   
+        }
     }
     
     /**

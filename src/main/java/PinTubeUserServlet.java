@@ -24,11 +24,13 @@ import javax.servlet.http.HttpSession;
 public class PinTubeUserServlet extends HttpServlet {
 
     private UserController userController;
-    private Database database;
+    private static Database database;
     
     public PinTubeUserServlet() {
         userController = new UserController();
-        database = new Database();
+        if (database == null) {
+            database = new Database();
+        }
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

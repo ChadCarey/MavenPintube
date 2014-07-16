@@ -37,7 +37,7 @@
 		<div class="input-group" style="width:330px; padding: 5px 20px 0px">
   			<span class="input-group-addon">Confirm</span>
   			<input type="password" class="form-control" name="pass2"/>
-		</div></form>
+		</div>
      <!--       Username: <input name="username" type="text"/>
             <br/>
             Password: <input name="password" type="password"/>
@@ -45,6 +45,7 @@
             <div style="padding: 10px 20px">
             	<input type="submit" value="Sign Up" class="btn btn-default navbar-btn"/>
             </div>
+     </form>
      <!--    </form>
        <div style="float:right">
         	No Account? <a href="CreateUser.jsp">Sign Up</a>

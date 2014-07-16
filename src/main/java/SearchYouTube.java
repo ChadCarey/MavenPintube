@@ -93,8 +93,10 @@ public class SearchYouTube extends HttpServlet {
             out.write("</div>");
             out.write("</div>");
             out.write("</div><br/>");
+            out.write("<form action=\'\' method=\'POST\'>");
             out.write("<input type=\'button\' value=\'Pin Video\' onclick=\"addVideo(\'" +
                     video.getTitle() + "\', \'"+ video.getId() + "\')\"/>");
+            out.write("</form>");
         }
     }
 

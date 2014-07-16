@@ -28,10 +28,11 @@ function getUserVideos()
 
 function addVideo(videoTitle, videoID)
 {
-    $.post('AddVideoServlet',
-    { 'videoTitle' : videoTitle, 'videoID' : videoID },
+    var str = 'AddVideoServlet?videoID=' + videoID;
+    str += '&videoTitle=' + videoTitle;
+    $.post(str,
     function(data/*resulting data*/)
     {
-        document.getElementById("main").innerHTML = data;
+        document.getElementById("main").innerHTML = "<h2>Pinned!</h2>";
     } );
 }
