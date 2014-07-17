@@ -40,7 +40,7 @@ public class Database {
 			host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
 			port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 			database = "java";
-			DB_URL = "jdbc:mysql://" + host + ":" + port + "/" + appname;
+			DB_URL = "jdbc:mysql://" + host + ":" + port + "/" + DB_NAME;
 		}
 		else
 		{
