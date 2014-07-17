@@ -11,12 +11,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pintube</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script type="text/JavaScript" src="PinTubeFunctions.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <script type="text/JavaScript" src="PinTubeFunctions.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
     </head>
     <body>
     <nav class="navbar navbar-default" role="navigation">
@@ -44,6 +45,7 @@
   </ul>
 	</div>
       </ul>
+
       <div class="navbar-form navbar-left" role="search" id="searchbox">
         <div class="form-group">
           <input type="text" class="form-control" name="searchQ" placeholder="Search Youtube" onkeyup="search()"/>
