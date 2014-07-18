@@ -325,37 +325,33 @@ public class Database {
         public boolean checkUser(String user, String pass) {
             try
             {		
-			sql = "SELECT id, username, password FROM user WHERE username= "
+            	sql = "SELECT id, username, password FROM user WHERE username= "
                                 + "'" + user + "'" + 
                                         "AND password = "
                                         + "'" + pass + "'";
-			ResultSet rs = stmt.executeQuery(sql);
-                        System.out.println("\tThis rs: " + rs);
-                try {
-                    if(rs.getObject("username") == null) {
-                        return false;
-                    }
-                    else {
-                        
-                    
-                        }
-                } catch (Exception e) {
-                    
-                }
 			
-                } catch(Exception e) {
-                    return false;
-                }
-            return true;
+				ResultSet rs = stmt.executeQuery(sql);
+				while (rs.next()) {
+					  String userN = rs.getString("username");
+					  System.out.println("Welcome: " + userN + "\n");
+					  return true;
+					}
+                System.out.println("\tThis rs : " + rs);
+                System.out.println("invalid login\n");
+                return false;
+            } catch(Exception e) {
+            	System.out.println("ERROR with try in database validation\n");
+                return false;
+            }
         }
         
         public static void main(String[] args) {
-            System.out.println("Starting db test");
+           /* System.out.println("Starting db test");
             Database db = new Database();
             db.connect();
             System.out.println(db.checkUser("brady", "mordor"));
             db.getUserVideos("brady");
-            db.disconnect();
+            db.disconnect();*/
         }
         
 }

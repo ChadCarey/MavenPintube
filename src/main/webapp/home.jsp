@@ -31,30 +31,25 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">Welcome</a>
+      <div class="btn-group">
+      <button type="button" class="btn btn-warning dropdown-toggle navbar-btn" data-toggle="dropdown">
+    ${user}<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="Logout">Sign Out</a></li>
+  </ul>
+  </div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-      <div class="btn-group">
-  <button type="button" class="btn btn-warning dropdown-toggle navbar-btn" data-toggle="dropdown">
-    ${user}<span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Sign Out</a></li>
-  </ul>
-	</div>
-      </ul>
-
       <div class="navbar-form navbar-left" role="search" id="searchbox">
         <div class="form-group">
           <input type="text" class="form-control" name="searchQ" placeholder="Search Youtube" onkeyup="search()"/>
         </div>
         <input type="button" class="btn btn-default" onclick='search()' value="Search"/>
       </div>
-      
       	<input type="button" class="btn btn-default navbar-btn" onclick='getUserVideos()' value="My Videos"/>
-      
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
