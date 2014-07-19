@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to PinTube!</title>
+        <title>PinTube</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -46,6 +46,6 @@
         <div style="float:right">
         	No Account? <a href="CreateUser.jsp">Sign Up</a>
         </div>
-        </div>
+     </div>
     </body>
 </html>

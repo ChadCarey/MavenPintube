@@ -63,21 +63,31 @@ public class CreateUserServlet extends HttpServlet {
             throws ServletException, IOException {
         // make sure the passwords are the same
         String pass = request.getParameter("pass");
-        if (!pass.equals(request.getParameter("pass2"))) {
-            String message = "Your passwords do not match";
-            request.setAttribute("invalid", message);
-            request.getRequestDispatcher("CreateUser.jsp").forward(request, response);
-        }
-        
+        String pass2 = request.getParameter("pass2");
         String user = request.getParameter("user");
-        if (userController.userExists(user)) {
-            String message = "Username is already in use";
-            request.setAttribute("invalid", message);
+        if (!pass.equals(pass2)) {
+            String message = "Your passwords do not match";
+            System.out.println(message);
+            request.setAttribute("incorrect", message);
             request.getRequestDispatcher("CreateUser.jsp").forward(request, response);
+            return;
         }
-        
-        if(userController.addUser(user, pass)) {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+        else if (userController.userExists(user)) {
+            String message = "Username is already in use";
+            System.out.println(message);
+            request.setAttribute("incorrect", message);
+            request.getRequestDispatcher("CreateUser.jsp").forward(request, response);
+            return;
+        }     
+        else if(userController.addUser(user, pass)) {
+        	response.sendRedirect("index.jsp");
+        }
+        else {
+        	   String message = "Error adding user";
+               System.out.println(message);
+               request.setAttribute("incorrect", message);
+               request.getRequestDispatcher("CreateUser.jsp").forward(request, response);
+               return;
         }
     }
 

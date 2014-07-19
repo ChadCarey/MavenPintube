@@ -85,8 +85,10 @@ public class PinTubeUserServlet extends HttpServlet {
             out.write("allowfullscreen></iframe>");
             out.write("</div>");
             out.write("</div>");
+            out.write("</div>");
             out.write("</div><br/>");
         }
+        
     }
 
     /**
@@ -100,6 +102,7 @@ public class PinTubeUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	System.out.println("Servlet: " + getServletContext().getRealPath("x"));
         PrintWriter out = response.getWriter();
         out.println("<h1>"+request.getMethod()+"</h1>");
         // log in
@@ -109,10 +112,10 @@ public class PinTubeUserServlet extends HttpServlet {
         if(userController.validLogin(username, password)) {
             HttpSession session = request.getSession();
             session.setAttribute("user", username);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-            
-        } else {
-            String message = "Your password is incorrect";
+            response.sendRedirect("home.jsp");
+        }     
+        else {
+            String message = "Username or password is incorrect";
             request.setAttribute("incorrect", message);
             request.getRequestDispatcher("index.jsp").forward(request, response);
         };

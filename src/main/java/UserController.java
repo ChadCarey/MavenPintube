@@ -39,7 +39,10 @@ class UserController {
      * @return 
      */
     public boolean userExists(String user) {
-        return false;
+    	database.connect();
+        boolean check = database.userExists(user);
+        database.disconnect();
+        return check;
     }
     
     /**

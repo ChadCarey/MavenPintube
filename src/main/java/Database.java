@@ -321,7 +321,25 @@ public class Database {
 		}
 		
 	}
-        
+        public boolean userExists(String user) {
+        	try
+            {		
+            	sql = "SELECT username FROM user WHERE username= "
+                                + "'" + user + "'";
+			
+				ResultSet rs = stmt.executeQuery(sql);
+				while (rs.next()) {
+					  String userN = rs.getString("username");
+					  System.out.println("Users exists: " + userN + "\n");
+					  return true;
+					}
+                System.out.println("free username\n");
+                return false;
+            } catch(Exception e) {
+            	System.out.println("ERROR with try in database validation\n");
+                return false;
+            }
+        }
         public boolean checkUser(String user, String pass) {
             try
             {		

@@ -28,7 +28,7 @@
         <form action="CreateUserServlet" method="POST">
         <div class="input-group" style="width:330px; padding: 20px">
   			<span class="input-group-addon">Username</span>
-  			<input type="text" class="form-control" name="username"/>
+  			<input type="text" class="form-control" name="user"/>
 		</div>
 		<div class="input-group" style="width:330px; padding: 0px 20px">
   			<span class="input-group-addon">Password</span>
