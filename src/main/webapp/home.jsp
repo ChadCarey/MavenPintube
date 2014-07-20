@@ -45,27 +45,35 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <div class="navbar-form navbar-left" role="search" id="searchbox">
         <div class="form-group">
-          <input type="text" class="form-control" name="searchQ" placeholder="Search Youtube" onkeyup="search()"/>
+          <input type="text" class="form-control" name="searchQ" placeholder="Search Youtube" onkeyup=" if (event.keyCode == 13) {search()}"/>
         </div>
-        <input type="button" class="btn btn-default" onclick='search()' value="Search"/>
+        <input type="button" class="btn btn-default"  onclick='search()' value="Search"/>
       </div>
       	<input type="button" class="btn btn-default navbar-btn" onclick='getUserVideos()' value="My Videos"/>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
         <header>
-       <!--<h4>Welcome ${user}</h4>
-        <form action="PinTubeUserServlet" method="GET">
-            <input type="button" onclick='getUserVideos()' value="My Videos"/>
-            <input type="submit" value="Log Out"/>
-        </form>
-        
-            <form id="searchbox" method="GET">
-                <input type="text" name="searchQ" placeholder="Search YouTube" onkeyup="search()"/> 
-                <input type="button" onclick='search()' value="Search"/>
-            </form>-->
+       <!--old location of code. Could be used for something else-->
         </header>
-        <div id="main">
+        <!-- Modal -->
+<div class="modal fade" id="searching" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center">
+        <h4 class="modal-title" id="myModalLabel">Searching Youtube</h4>
+      </div>
+      <div class="modal-body">
+       <div class="progress">
+  <div class="progress-bar progress-bar-warning progress-bar-striped active"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+    <span class="sr-only">100% Complete (warning)</span>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+        <div id="main" style="padding:0px 20px">
             
         </div>
     </body>

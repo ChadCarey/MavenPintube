@@ -76,27 +76,23 @@ public class SearchYouTube extends HttpServlet {
         Writer out = response.getWriter();
         out.write("<h3>Search results for: " + search + "</h3>");
         for(YouTubeVideo video : results) {
-            
-            out.write("<div class='.col-md-12'");
             out.write("<div class='row'>");
-            out.write("<div class='span6'>");
-            out.write("<h4>" + video.getTitle() + "</h4>");
-            out.write("</div>");
-            
-            out.write("<div class='span6'>");
-            out.write("<iframe width='320' ");
-            out.write("height='180' ");
+        	out.write("<div class='col-xs-6 col-md-4'>");
+        	out.write("<div class='thumbnail' style='text-align:center'>");
+        	out.write("<h3>" + video.getTitle() + "</h3>");
+        	out.write("<div class='embed-responsive embed-responsive-16by9'>");
+            out.write("<iframe class='embed-responsive-item' ");
             out.write("src='//www.youtube.com/embed/");
             out.write(video.getId());
-            out.write("'frameborder='0' ");
-            out.write("allowfullscreen></iframe>");
+            out.write("' allowfullscreen></iframe>");
             out.write("</div>");
-            out.write("</div>");
-            out.write("</div><br/>");
             out.write("<form action=\'\' method=\'POST\'>");
             out.write("<input type=\'button\' value=\'Pin Video\' onclick=\"addVideo(\'" +
                     video.getTitle() + "\', \'"+ video.getId() + "\')\"/>");
             out.write("</form>");
+            out.write("</div>");
+            out.write("</div>");
+            out.write("</div><br/>");
         }
     }
 

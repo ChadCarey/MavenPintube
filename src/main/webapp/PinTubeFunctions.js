@@ -1,6 +1,8 @@
 
 function search() 
-{
+{	
+	$('#myModalLabel').text("Searching Youtube");
+	$('#searching').modal('show');
     var search = $('[name=searchQ]').val();
     if (search == "") {
         document.getElementById("main").innerHTML = "";
@@ -12,16 +14,25 @@ function search()
     function(data/*resulting data*/,status,xhr/*xmlobject*/)
     {
         document.getElementById("main").innerHTML = data;
+        
+        $(document).ready( function() {
+        	$('#searching').modal('hide');
+        });
     } );
 }
 
 function getUserVideos()
 {
+	$('#myModalLabel').text("Loading Videos");
+	$('#searching').modal('show');
     $.get('PinTubeUserServlet',
     {'req' : 'getUserVideos'},
     function(data/*resulting data*/)
     {
         document.getElementById("main").innerHTML = data;
+        $(document).ready( function() {
+        	$('#searching').modal('hide');
+        });
     } );
 }
 
