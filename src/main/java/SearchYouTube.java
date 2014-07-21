@@ -76,6 +76,9 @@ public class SearchYouTube extends HttpServlet {
         Writer out = response.getWriter();
         out.write("<h3>Search results for: " + search + "</h3>");
         for(YouTubeVideo video : results) {
+        	String title = video.getTitle();
+        	title = title.replace("\"", "");
+        	title = title.replace("\'", "");
             out.write("<div class='row'>");
         	out.write("<div class='col-xs-6 col-md-4'>");
         	out.write("<div class='thumbnail' style='text-align:center'>");
@@ -88,7 +91,7 @@ public class SearchYouTube extends HttpServlet {
             out.write("</div>");
             out.write("<form action=\'\' method=\'POST\'>");
             out.write("<input type=\'button\' value=\'Pin Video\' onclick=\"addVideo(\'" +
-                    video.getTitle() + "\', \'"+ video.getId() + "\')\"/>");
+                    title + "\', \'"+ video.getId() + "\')\"/>");
             out.write("</form>");
             out.write("</div>");
             out.write("</div>");

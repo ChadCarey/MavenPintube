@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PinTubeApp</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+h2{
+    margin: 0;     
+    color: #666;
+    padding-top: 25px;
+    font-size: 52px;
+    font-family: "trebuchet ms", sans-serif;    
+}
+.item{
+    background: #333;    
+    text-align: center;
+    height: 500px !important;
+}
+.carousel{
+    margin-top: 0px;
+}
+.bs-example{
+	margin: 0px;
+}
+.c-image {
+   height: 300px;
+   width: 623px;
+   margin: auto;
+   padding:2px;
+   border:1px solid #021a40;
+   background-color:#f0ad4e;
+}
+</style>
+</head>
+<body>
+<div class="bs-example">
+    <div id="myCarousel" class="carousel slide" data-interval="4000" data-ride="carousel">
+    	<!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>   
+       <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="active item">
+               <h2>Find New Videos</h2>
+                <img class="c-image" src="slide1.jpg" alt="Search">
+                <div class="carousel-caption">
+                  <h3>Search It</h3>
+                  <p>Search YouTube and find all your favorites.</p>
+                </div>
+            </div>
+            <div class="item">
+                <h2>Save Videos</h2>
+                <img class="c-image" src="slide2.jpg" alt="Pin">
+                <div class="carousel-caption">
+                  <h3>Pin It</h3>
+                  <p>Pin new videos with a single click of a button.</p>
+                </div>
+            </div>
+            <div class="item">
+                <h2>Share Videos</h2>
+                <img class="c-image" src="slide3.jpg" alt="Tag">
+                <div class="carousel-caption">
+                  <h3>Watch It</h3>
+                  <p>Have all your videos in one place to share.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+</div>
+<div style="margin:auto; width:500px">
+<div style="float:left"><b>Features</b>
+<ul>
+<li>Search YouTube for videos</li>
+<li>Watch videos in browser</li>
+<li>Pin videos to keep a collection</li>
+</ul>
+</div>
+<div style="float:left"><b>Coming Soon</b>
+<ul>
+<li>Categorize your collection</li>
+<li>Share videos with friends</li>
+<li>Customize your video player</li>
+</ul>
+</div>
+<div style="text-align:center">
+<form action="index.jsp">
+<button type="submit" class="btn btn-warning">Get Started!</button>
+</form>
+</div>
+</div>
+</body>
+</html>
