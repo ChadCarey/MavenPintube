@@ -44,11 +44,9 @@ public class Database {
 		}
 		else
 		{
-
 			System.out.println("localhost");
 			user = "java";
-			pass = "mordor";
-			
+			pass = "mordor";	
 			DB_URL = "jdbc:mysql://localhost/" + DB_NAME;
 		}
 		
