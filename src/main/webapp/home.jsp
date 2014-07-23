@@ -30,8 +30,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Welcome</a>
-      <div class="btn-group">
+        <a class="navbar-brand" href="#">Welcome</a>
+      <div class="btn-group" style="float:left">
       <button type="button" class="btn btn-warning dropdown-toggle navbar-btn" data-toggle="dropdown">
     ${user}<span class="caret"></span>
   </button>
@@ -44,10 +44,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <div class="navbar-form navbar-left" role="search" id="searchbox">
-        <div class="form-group">
+        <div class="input-group">
           <input type="text" class="form-control" name="searchQ" placeholder="Search Youtube" onkeyup=" if (event.keyCode == 13) {search()}"/>
+          <span class="input-group-btn">
+              <button type="button" class="btn btn-default"  onclick='search()'>Search</button>
+          </span>
         </div>
-        <input type="button" class="btn btn-default"  onclick='search()' value="Search"/>
+        
       </div>
       	<input type="button" class="btn btn-default navbar-btn" onclick='getUserVideos()' value="My Videos"/>
     </div><!-- /.navbar-collapse -->
