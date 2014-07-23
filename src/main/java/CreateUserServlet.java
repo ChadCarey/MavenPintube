@@ -7,7 +7,8 @@
  */
 
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author chad
  */
+@SuppressWarnings("serial")
 @WebServlet(urlPatterns = {"/CreateUserServlet"})
 public class CreateUserServlet extends HttpServlet {
 
@@ -32,7 +34,7 @@ public class CreateUserServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+       // PrintWriter out = response.getWriter();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

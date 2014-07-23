@@ -6,10 +6,12 @@
 
 import com.google.api.services.samples.youtube.cmdline.youtube_cmdline_search_sample.Search;
 import com.google.api.services.samples.youtube.cmdline.youtube_cmdline_search_sample.YouTubeVideo;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  * gData Set Up: http://mrhaki.blogspot.com/2009/02/add-google-data-java-client-library-to.html 
  * @author chad
  */
+@SuppressWarnings("serial")
 @WebServlet(urlPatterns = {"/SearchYouTube"})
 public class SearchYouTube extends HttpServlet {
 

@@ -34,7 +34,7 @@ public class Database {
 		{
 			System.out.println("openshift");
 			System.out.println(System.getenv("OPENSHIFT_MYSQL_DB_USERNAME"));
-			String appname = System.getenv("OPENSHIFT_APP_NAME");
+			//String appname = System.getenv("OPENSHIFT_APP_NAME");
 			user = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 			pass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
 			host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
