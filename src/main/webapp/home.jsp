@@ -17,9 +17,17 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <script type="text/JavaScript" src="PinTubeFunctions.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+        <script type="text/javascript">
+            function checkUser() 
+            {
+                if (!"${user}") 
+                {
+                    window.location.replace("index.jsp");
+                }
+            }
+        </script>
     </head>
-    <body>
+    <body onload="checkUser()">
     <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
