@@ -67,24 +67,24 @@ public class PinTubeUserServlet extends HttpServlet {
             Writer out = response.getWriter();
 
             if(results.size() > 0) {
-            out.write("<div class='row'>");
-            for(Video video : results) {
-                    out.write("<div class='col-xs-6 col-md-4'>");
-                    out.write("<div class='thumbnail' style='text-align:center'>");
-                    out.write("<h3>" + video.getTitle() + "</h3>");
-                    out.write("<div class='embed-responsive embed-responsive-16by9'>");
-                out.write("<iframe class='embed-responsive-item' ");
-                out.write("src='//www.youtube.com/embed/");
-                out.write(video.getLink());
-                out.write("' allowfullscreen></iframe>");
-                out.write("</div>");
-                out.write("</div>");
-                out.write("</div>");
+               out.write("<div class='row'>");
+               for(Video video : results) {
+                  out.write("<div class='col-xs-6 col-md-4'>");
+                  out.write("<div class='thumbnail' style='text-align:center'>");
+                  out.write("<h3>" + video.getTitle() + "</h3>");
+                  out.write("<div class='embed-responsive embed-responsive-16by9'>");
+                  out.write("<iframe class='embed-responsive-item' ");
+                  out.write("src='//www.youtube.com/embed/");
+                  out.write(video.getLink());
+                  out.write("' allowfullscreen></iframe>");
+                  out.write("</div>");
+                  out.write("</div>");
+                  out.write("</div>");
+               }
+               out.write("</div>");
             }
-            out.write("</div>");
-        }
-        else
-        	out.write("<h3>No Videos Pinned</h3>");
+            else
+               out.write("<h3>No Videos Pinned</h3>");
         }
         else {
             System.out.println("Not logged in, redirecting to home page");

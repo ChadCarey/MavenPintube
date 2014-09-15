@@ -1,4 +1,3 @@
-
 function search() 
 {	
 	$('#myModalLabel').text("Searching Youtube");
