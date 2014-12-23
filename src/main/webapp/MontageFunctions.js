@@ -24,7 +24,7 @@ function getUserVideos()
 {
 	$('#myModalLabel').text("Loading Videos");
 	$('#searching').modal('show');
-    $.get('PinTubeUserServlet',
+    $.get('MontageUserServlet',
     {'req' : 'getUserVideos'},
     function(data/*resulting data*/)
     {

@@ -22,13 +22,13 @@ import javax.servlet.http.HttpSession;
  * @author chad
  */
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/PinTubeUserServlet"})
-public class PinTubeUserServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/MontageUserServlet"})
+public class MontageUserServlet extends HttpServlet {
 
     private UserController userController;
     private static Database database;
     
-    public PinTubeUserServlet() {
+    public MontageUserServlet() {
         userController = new UserController();
         if (database == null) {
             database = new Database();

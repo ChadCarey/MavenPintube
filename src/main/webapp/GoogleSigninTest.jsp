@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Pintube Google Signin!</title>
+<title>Montage Google Signin!</title>
 
 	<script type="text/javascript">
 		function signinCallback(authResult) {
 	  		if (authResult['status']['signed_in']) {
 		    	// TODO - Update the app to reflect a signed in user
-		    	//      - So basically, check if they already have signed in to Pintube with
+		    	//      - So basically, check if they already have signed in to Montage with
 		    	//      - their Google account before (e.g. query the database) and if
 		    	//      - they have logged in before, load their videos, etc..
 		    	//      -

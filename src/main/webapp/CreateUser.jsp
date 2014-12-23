@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pintube</title>
+        <title>Montage</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
     </head>
     <body>
     <div style="width:500px; margin:auto; padding:50px 0px">
-    <h3>Welcome to Pintube!</h3>
+    <h3>Welcome to Montage!</h3>
     </div>
         <div class="panel panel-warning" style="width:500px; margin:auto">
     <div class="panel-heading">

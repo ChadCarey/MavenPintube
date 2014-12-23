@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>PinTube</title>
+        <title>Montage</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -19,14 +19,14 @@
     </head>
     <body>
     <div style="width:500px; margin:auto; padding:50px 0px">
-    <h3>Welcome to Pintube!</h3>
+    <h3>Welcome to Montage!</h3>
     </div>
     <div class="panel panel-warning" style="width:500px; margin:auto">
     <div class="panel-heading">
     <h3 class="panel-title">Please Sign In</h3>
   	</div>
         <p>${incorrect}</p>
-        <form action="PinTubeUserServlet" method="POST">
+        <form action="MontageUserServlet" method="POST">
         <div class="input-group" style="width:330px; padding: 20px">
   			<span class="input-group-addon">Username</span>
   			<input type="text" class="form-control" name="username"/>
