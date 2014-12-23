@@ -1,5 +1,5 @@
-MavenPintube
+Montage
 ============
 
-A working version of Pintube
-Pintube version 1
+A working version of Montage
+Montage version 1
