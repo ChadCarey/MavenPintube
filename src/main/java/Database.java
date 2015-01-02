@@ -73,8 +73,9 @@ public class Database {
          * @param title
          * @param videoID
          * @param username 
+         * @param categoryID 
          */
-        public void addVideo(String title, String videoID, String username) {
+        public void addVideo(String title, String videoID, String username, int categoryID) {
             try {
                 System.out.println("Getting user ID");
                 sql = "SELECT id FROM user WHERE username='" + username + "'";
@@ -84,7 +85,7 @@ public class Database {
                 System.out.println("Cointans next: " + rs.next());
                 int userID = rs.getInt("id");
                 System.out.println("ID: " + userID);
-                addVideo(new Video(userID, title, videoID));
+                addVideo(new Video(userID, title, videoID, categoryID));
             } catch (SQLException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception e) {
@@ -96,10 +97,10 @@ public class Database {
 	{		
 		System.out.println("Adding video to database..");
 		try
-		{		
-			sql = "INSERT INTO videos (user_id, video, title) VALUES ("
+		{	// TO-DO: check for and ignore duplicates	
+			sql = "INSERT INTO videos (user_id, video, title, category_id) VALUES ("
 					+ userVideo.userID + ", " + "'" + userVideo.link + "'" + ", "
-					+ "'" + userVideo.title + "'" + ")";
+					+ "'" + userVideo.title + "'" + ", " + userVideo.category + ")";
                         System.out.println(sql);
 			stmt.executeUpdate(sql);
 			
@@ -137,13 +138,14 @@ public class Database {
 	}
 	
         
-        public List<Video> getUserVideos(String user) {
+        public List<Video> getUserVideos(String user, int category) {
             List<Video> videos = new ArrayList<Video>();
             
             try
 		{		
 			sql = "SELECT v.id, user_id, video, category_id, title FROM videos v";
                         sql += " JOIN user u ON u.id = v.user_id " + "WHERE username='" + user + "'";
+                        sql += " and v.category_id=" + category;
                         System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			System.out.println("Obtained results");
@@ -165,7 +167,7 @@ public class Database {
 				System.out.println(", Title: " + title);
 				System.out.println("Video Link: " + link);
                                 
-                                videos.add(new Video(userID, title, link));
+                                videos.add(new Video(userID, title, link, categoryID));
 			}
 			rs.close();
                 } catch (SQLException e) {
@@ -179,7 +181,50 @@ public class Database {
             
             return videos;
         }
-        
+         public List<Reel> getUserReels(String user) {
+            List<Reel> reels = new ArrayList<Reel>();
+            
+            try
+		{		
+			sql = "SELECT DISTINCT r.id, category FROM category r";
+                        sql += " JOIN videos v ON v.category_id = r.id ";
+                        sql += " JOIN user u ON u.id = v.user_id WHERE username='" + user + "'";
+                        System.out.println(sql);
+			ResultSet rs = stmt.executeQuery(sql);
+			System.out.println("Obtained results");
+			
+			//STEP 5: Extract data from result set
+			while(rs.next())
+			{
+				//Retrieve by column name
+				int id  = rs.getInt("id");
+				//int userID  = rs.getInt("user_id");
+				//int categoryID = rs.getInt("category_id");
+				//String link = rs.getString("video");
+				String title = rs.getString("category");
+		
+				//Display values
+				System.out.print("ID: " + id);
+				//System.out.print(", User ID: " + userID);
+				//System.out.print(" , Category ID: " + categoryID);
+				//System.out.println(", Title: " + title);
+				System.out.println("Category: " + title);
+                                
+                                reels.add(new Reel(id, title));
+			}
+			rs.close();
+                } catch (SQLException e) {
+                    System.out.println("ERROR loading user reels e=1\n" + e.getMessage());
+                    e.printStackTrace();
+                    
+                } catch (Exception e) {
+                    System.out.println("ERROR loading user reels e=2\n" + e.getMessage());
+                    e.printStackTrace();
+                }
+            
+            return reels;
+        }
+         
 	public void displayAllVideos()
 	{
 		try
@@ -239,6 +284,7 @@ public class Database {
 		}
 	}
 	
+        
 	public void displayAllUsers()
 	{
 		//Display all users in database

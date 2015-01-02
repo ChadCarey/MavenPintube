@@ -43,7 +43,7 @@ public class Search {
   private List<YouTubeVideo> list;
     
   /** Global instance properties filename. */
-  private static String PROPERTIES_FILENAME = "youtube.properties";
+  private static final String PROPERTIES_FILENAME = "youtube.properties";
 
   /** Global instance of the HTTP transport. */
   private static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
@@ -54,7 +54,7 @@ public class Search {
   /** Global instance of the max number of videos we want returned (50 = upper limit per page). */
   private static final long NUMBER_OF_VIDEOS_RETURNED = 10;
 
-  /** Global instance of Youtube object to make all API requests. */
+  /** Global instance of YouTube object to make all API requests. */
   private static YouTube youtube;
 
   public List<YouTubeVideo> search(String search) {

@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns = {"/MontageUserServlet"})
 public class MontageUserServlet extends HttpServlet {
 
-    private UserController userController;
+    private final UserController userController;
     private static Database database;
     
     public MontageUserServlet() {
@@ -57,34 +57,66 @@ public class MontageUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String user = (String)request.getSession().getAttribute("user");
+        String user;
+        user = request.getSession().getAttribute("user").toString();
         System.out.println("USER==="+user);
         if (user != null) {
-            database.connect();
-            List<Video> results = database.getUserVideos(user);
-            database.disconnect();
-
-            Writer out = response.getWriter();
-
-            if(results.size() > 0) {
-               out.write("<div class='row'>");
-               for(Video video : results) {
-                  out.write("<div class='col-xs-6 col-md-4'>");
-                  out.write("<div class='thumbnail' style='text-align:center'>");
-                  out.write("<h3>" + video.getTitle() + "</h3>");
-                  out.write("<div class='embed-responsive embed-responsive-16by9'>");
-                  out.write("<iframe class='embed-responsive-item' ");
-                  out.write("src='//www.youtube.com/embed/");
-                  out.write(video.getLink());
-                  out.write("' allowfullscreen></iframe>");
-                  out.write("</div>");
-                  out.write("</div>");
-                  out.write("</div>");
-               }
-               out.write("</div>");
+            System.out.println(request.getParameter("req"));
+            if (request.getParameter("req").equals("getUserVideos"))
+            {
+                int reelID = Integer.parseInt(request.getParameter("reel"));
+                List<Video> results = getUserVideos(user, reelID);
+                Writer out = response.getWriter();
+                // to-do: instead of iframe, gen thumnail as link to open iframe in new window
+                if(results.size() > 0) {
+                   out.write("<div class='row'>");
+                   for(Video video : results) {
+                      out.write("<div class='col-xs-6 col-md-4'>");
+                      out.write("<div class='thumbnail' style='text-align:center'>");
+                      out.write("<h3>" + video.getTitle() + "</h3>");
+                      out.write("<div class='embed-responsive embed-responsive-16by9'>");
+                      out.write("<iframe class='embed-responsive-item' ");
+                      out.write("src='//www.youtube.com/embed/");
+                      out.write(video.getLink());
+                      out.write("' allowfullscreen></iframe>");
+                      out.write("</div>");
+                      out.write("</div>");
+                      out.write("</div>");
+                   }
+                   out.write("</div>");
+                }
+                else
+                   out.write("<h3>No Videos Tagged</h3>");
             }
-            else
-               out.write("<h3>No Videos Pinned</h3>");
+            else if(request.getParameter("req").equals("getUserReels"))
+            { 
+                // get the stuff
+                List<Reel> results = getUserReels(user);
+                Writer out = response.getWriter();
+
+                if(results.size() > 0) {
+                   out.write("<div class='row'>");
+                   for(Reel reel : results) {
+                      out.write("<div class='col-xs-6 col-md-4 reel'>");
+                      out.write("<a href='#' onclick='getUserVideos(");
+                      out.write(Integer.toString(reel.getID()));
+                      out.write(")' class='thumbnail'" +
+                                "style='text-align:center; color:black; text-decoration: none;'>");
+                      out.write("<h3>" + reel.getTitle() + "</h3>");
+                      out.write("<div class='embed-responsive embed-responsive-16by9'>");
+                     // out.write("<iframe class='embed-responsive-item' ");
+                     // out.write("src='//www.youtube.com/embed/");
+                     // out.write(video.getLink());
+                     // out.write("' allowfullscreen></iframe>");
+                      out.write("</div>");
+                      out.write("</a>");
+                      out.write("</div>");
+                   }
+                   out.write("</div>");
+                }
+                else
+                   out.write("<h3>No Reels Available</h3>");
+            }
         }
         else {
             System.out.println("Not logged in, redirecting to home page");
@@ -110,16 +142,24 @@ public class MontageUserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
-        if(userController.validLogin(username, password)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", username);
+        if(userController.validLogin(username, password)) 
+        {
+            HttpSession session = request.getSession(false);
+            if (session == null) 
+            {
+                session = request.getSession();
+                session.setAttribute("user", username);
+            } 
+            //session.setAttribute("user", username);
+            System.out.println(request.getSession().getAttribute("user").toString());
             response.sendRedirect("home.jsp");
         }     
-        else {
+        else 
+        {
             String message = "Username or password is incorrect";
             request.setAttribute("incorrect", message);
             request.getRequestDispatcher("index.jsp").forward(request, response);
-        };
+        }
     }
 
     /**
@@ -131,5 +171,20 @@ public class MontageUserServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
+    public static List<Video> getUserVideos(String user, int reelID) {
+        database.connect();
+        List<Video> results = database.getUserVideos(user, reelID);
+        database.disconnect();
+        System.out.println("Get Videos");
+        return results;
+    }
+    
+    public static List<Reel> getUserReels(String user) {
+        database.connect();
+        List<Reel> results = database.getUserReels(user);
+        database.disconnect();
+        System.out.println("Get Reels");
+        return results;
+    }
 }

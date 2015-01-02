@@ -90,11 +90,16 @@ public class AddVideoServlet extends HttpServlet {
         System.out.println("videoID= " + videoID);
         String title = request.getParameter("videoTitle");
         System.out.println("videoTitle= " + title);
+        String [] reelIDs = request.getParameterValues("reels");
         String username = (String) request.getSession().getAttribute("user");
         System.out.println("username="+ username);
         
         database.connect();
-        database.addVideo(title, videoID, username);
+        for (String reelID : reelIDs)
+        {
+            System.out.println("reelID="+ reelID);
+            database.addVideo(title, videoID, username, Integer.parseInt(reelID));
+        }
         database.disconnect();
     }
 

@@ -3,10 +3,10 @@ public class Video {
 	int id;
 	int userID;
 	String title;
-	//String [] category;
+	int category;
 	String link;
 	
-	public Video (int userID1, String title1, String link1)
+	public Video (int userID1, String title1, String link1, int cat1)
 	{
 		userID = userID1;
                 if(title1.length() > 30) {
@@ -14,6 +14,7 @@ public class Video {
                 }
 		title = title1;
 		link = link1;
+                category = cat1;
 	}
 	
 	public int getID()
@@ -24,13 +25,18 @@ public class Video {
 	public int getUserID()
 	{
 		return userID;
-	}
-	
+        }
+        
 	public String getTitle()
 	{
 		return title;
 	}
 	
+        public int getCategory()
+	{
+		return category;
+	}
+        
 	public String getLink()
 	{
 		return link;

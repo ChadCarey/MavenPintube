@@ -71,36 +71,55 @@ public class SearchYouTube extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String user;
+        user = request.getSession().getAttribute("user").toString();
+        System.out.println("USER==="+user);
+        if (user != null) {
+            List<Reel> reels= MontageUserServlet.getUserReels(user);
         Search searchYouTube = new Search();
         String search = request.getParameter("search");
         List<YouTubeVideo> results = searchYouTube.search(search);
         
+        // build Reel button
+        String reelBtn = "<select name='reels' class='selectpicker' data-width='auto' multiple><optgroup label='Reels'>\n";
+        for(Reel reel : reels) {
+            reelBtn = reelBtn + "<option value='" + Integer.toString(reel.getID()) + "' >" + 
+                    reel.getTitle() + "</option>\n";
+        }
+        reelBtn = reelBtn + "</optgroup>";
+        reelBtn = reelBtn + "<optgroup label=''>";
+        reelBtn = reelBtn + "<option value='-1' > + New Reel</option>";
+        reelBtn = reelBtn + "</optgroup>";
+        reelBtn = reelBtn + "</select>\n";
+        System.out.println(reelBtn);
         Writer out = response.getWriter();
         out.write("<h3>Search results for: " + search + "</h3>");
+        String title; // for storing the name
         for(YouTubeVideo video : results) {
-        	String title = video.getTitle();
+        	title = video.getTitle();
         	title = title.replace("\"", "");
         	title = title.replace("\'", "");
-            out.write("<div class='row'>");
-        	out.write("<div class='col-xs-6 col-md-4'>");
+                out.write("<div class='row'>");
+        	out.write("<div class='col-xs-6 col-md-6'>");
         	out.write("<div class='thumbnail' style='text-align:center'>");
-        	out.write("<h3>" + video.getTitle() + "</h3>");
+        	out.write("<h4>" + video.getTitle() + "</h4>");
         	out.write("<div class='embed-responsive embed-responsive-16by9'>");
             out.write("<iframe class='embed-responsive-item' ");
             out.write("src='//www.youtube.com/embed/");
             out.write(video.getId());
             out.write("' allowfullscreen></iframe>");
             out.write("</div>");
-            out.write("<form action=\'\' method=\'POST\'>");
-            out.write("<input type=\'button\' value=\'Pin Video\' onclick=\"addVideo(\'" +
+            out.write("<form id='newVideo' action=\'\' method=\'POST\'>");
+            out.write(reelBtn);
+            out.write("<input type=\'button\' value=\'Tag Video\' onclick=\"addVideo(\'" +
                     title + "\', \'"+ video.getId() + "\')\"/>");
             out.write("</form>");
             out.write("</div>");
             out.write("</div>");
             out.write("</div><br/>");
         }
-    }
+    } 
+}   
 
     /**
      * Handles the HTTP <code>POST</code> method.

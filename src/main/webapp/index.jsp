@@ -4,7 +4,7 @@
     Author     : chad
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 
 <!DOCTYPE html>
 <html>
@@ -29,7 +29,7 @@
         <form action="MontageUserServlet" method="POST">
         <div class="input-group" style="width:330px; padding: 20px">
   			<span class="input-group-addon">Username</span>
-  			<input type="text" class="form-control" name="username"/>
+  			<input type="text" class="form-control" name="username" autofocus/>
 		</div>
 		<div class="input-group" style="width:330px; padding: 0px 20px">
   			<span class="input-group-addon">Password</span>
