@@ -97,8 +97,8 @@ public class Database {
 	{		
 		System.out.println("Adding video to database..");
 		try
-		{	// TO-DO: check for and ignore duplicates	
-			sql = "INSERT INTO videos (user_id, video, title, category_id) VALUES ("
+		{	// check for and ignore duplicates	
+			sql = "INSERT IGNORE INTO videos (user_id, video, title, category_id) VALUES ("
 					+ userVideo.userID + ", " + "'" + userVideo.link + "'" + ", "
 					+ "'" + userVideo.title + "'" + ", " + userVideo.category + ")";
                         System.out.println(sql);
