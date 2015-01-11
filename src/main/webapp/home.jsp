@@ -24,18 +24,19 @@
             {
                 if (!"${user}") 
                 {
-                    window.location.replace("index.jsp");
+                    window.location.replace("login.jsp");
                 }
                 else
                 {
                     // load user video categories
+                    $("#welcome").fadeIn();
                     getUserReels();
                 }
             }
         </script>
     </head>
     <body onload="checkUser()">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav id="welcome" style="display:none" class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">

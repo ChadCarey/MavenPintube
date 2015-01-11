@@ -35,7 +35,7 @@ public class Logout extends HttpServlet {
         {
 		// TODO Auto-generated method stub
 		//request.getSession().invalidate();
-		//response.sendRedirect("index.jsp");
+		//response.sendRedirect("login.jsp");
             response.setHeader("Cache-Control","no-store"); //HTTP 1.1
             response.setHeader("Pragma","no-cache"); //HTTP 1.0
             response.setDateHeader ("Expires", 0);
@@ -49,7 +49,7 @@ public class Logout extends HttpServlet {
                 session.invalidate();//unbinds any objects bound to it
                 session = null ;//enforcing the session, that doesn't hold any objects
             }
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("login.jsp");
         } 
 	
 
@@ -77,7 +77,7 @@ public class Logout extends HttpServlet {
                 session.invalidate();//unbinds any objects bound to it
                 session = null ;//enforcing the session, that doesn't hold any objects
             }
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("login.jsp");
 	}
 
 }

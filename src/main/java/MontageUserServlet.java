@@ -120,7 +120,7 @@ public class MontageUserServlet extends HttpServlet {
         }
         else {
             System.out.println("Not logged in, redirecting to home page");
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("login.jsp");
         }
     }
 
@@ -144,13 +144,8 @@ public class MontageUserServlet extends HttpServlet {
         
         if(userController.validLogin(username, password)) 
         {
-            HttpSession session = request.getSession(false);
-            if (session == null) 
-            {
-                session = request.getSession();
-                session.setAttribute("user", username);
-            } 
-            //session.setAttribute("user", username);
+            HttpSession session = request.getSession();
+            session.setAttribute("user", username);
             System.out.println(request.getSession().getAttribute("user").toString());
             response.sendRedirect("home.jsp");
         }     
@@ -158,7 +153,7 @@ public class MontageUserServlet extends HttpServlet {
         {
             String message = "Username or password is incorrect";
             request.setAttribute("incorrect", message);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 

@@ -94,7 +94,6 @@ function addVideo(videoTitle, videoID)
     var str = 'AddVideoServlet?videoID=' + videoID;
     str += '&videoTitle=' + videoTitle;
     str += '&' + $('#newVideo').serialize();
-    alert(str);
     $.post(str,
     function(data/*resulting data*/)
     {

@@ -82,7 +82,7 @@ public class CreateUserServlet extends HttpServlet {
             return;
         }     
         else if(userController.addUser(user, pass)) {
-        	response.sendRedirect("index.jsp");
+        	response.sendRedirect("login.jsp");
         }
         else {
         	   String message = "Error adding user";
