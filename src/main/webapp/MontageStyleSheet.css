@@ -5,25 +5,28 @@
 
 body
 {
-    background-color: teal;
+    //background-color: teal;
 }
 
-div, form
+#main
 {
-    background-color: tan;
-    padding: 5px;
-    margin:5px;
+    padding:0px 20px;
 }
 
 .videobox
-{
+{/*
     background-color: gray;
     width: 500px;
-    height: 300px;
+    height: 300px;*/
 }
 
 reel > a
 {
     
-    text-align:center;
+    //text-align:center;
+}
+
+#welcome
+{
+    display:none;
 }

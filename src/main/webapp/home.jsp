@@ -16,27 +16,14 @@
         <link rel="stylesheet" type="text/css" href="bootstrap-select.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!-- Montage Styles -->
+        <link rel="stylesheet" type="text/css" href="MontageStyleSheet.css">
         <script type="text/JavaScript" src="MontageFunctions.js"></script>
         <script type="text/javascript" src="bootstrap-select.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-            function checkUser() 
-            {
-                if (!"${user}") 
-                {
-                    window.location.replace("login.jsp");
-                }
-                else
-                {
-                    // load user video categories
-                    $("#welcome").fadeIn();
-                    getUserReels();
-                }
-            }
-        </script>
     </head>
-    <body onload="checkUser()">
-    <nav id="welcome" style="display:none" class="navbar navbar-default" role="navigation">
+    <body onload='checkUser("${user}")'>
+    <nav id="welcome" class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -98,6 +85,13 @@
     </div>
   </div>
 </div>
-<div id="main" style="padding:0px 20px"></div>
+<div class="modal fade bs-example-modal-lg" id="vid" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div id="vidBody" class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+<div id="main"></div>
     </body>
 </html>

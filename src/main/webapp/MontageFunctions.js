@@ -102,6 +102,21 @@ function addVideo(videoTitle, videoID)
     } );
 }
 
+function playVideo(link, title)
+{
+    var window = "<div id='vidBody' style='text-align:center; margin:auto'>" +
+                 "<div class='embed-responsive embed-responsive-16by9'>" +     
+                 "<iframe class='embed-responsive-item' " +
+                 "src='//www.youtube.com/embed/" +
+                  link +
+                 "?autoplay=1' allowfullscreen></iframe>" + 
+                 "</div>" +
+                 "</div>";
+         $('#myLargeModalLabel').text(title);
+         $('#vidBody').replaceWith(window);
+         $('#vid').modal('show');
+}
+
 function parseReel(/*should be result of getUserReels data*/)
 {
    var reels = $(".reel");
@@ -121,4 +136,18 @@ function parseReel(/*should be result of getUserReels data*/)
        arr.push({id:num, name: text});
    }
    return arr;
+}
+
+function checkUser(loggedin) 
+{
+   if (!loggedin) 
+   {
+       window.location.replace("login.jsp");
+   }
+   else
+   {
+       // load user video categories
+       $("#welcome").fadeIn();
+       getUserReels();
+   }
 }
