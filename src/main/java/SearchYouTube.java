@@ -91,7 +91,8 @@ public class SearchYouTube extends HttpServlet {
         reelBtn = reelBtn + "<option value='-1' > + New Reel</option>";
         reelBtn = reelBtn + "</optgroup>";
         reelBtn = reelBtn + "</select>\n";
-        System.out.println(reelBtn);
+        // use unicode for special chars 
+        response.setCharacterEncoding("UTF-8");
         Writer out = response.getWriter();
         out.write("<h3>Search results for: " + search + "</h3>");
         String title; // for storing the name

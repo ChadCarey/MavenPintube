@@ -66,8 +66,9 @@ public class MontageUserServlet extends HttpServlet {
             {
                 int reelID = Integer.parseInt(request.getParameter("reel"));
                 List<Video> results = getUserVideos(user, reelID);
+                // use unicode for special chars 
+                response.setCharacterEncoding("UTF-8");
                 Writer out = response.getWriter();
-                // to-do: instead of iframe, gen thumnail as link to open iframe in new window
                 if(results.size() > 0) {
                    out.write("<div class='row'>");
                    for(Video video : results) {
