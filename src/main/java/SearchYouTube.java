@@ -80,17 +80,6 @@ public class SearchYouTube extends HttpServlet {
         String search = request.getParameter("search");
         List<YouTubeVideo> results = searchYouTube.search(search);
         
-        // build Reel button
-        String reelBtn = "<select name='reels' class='selectpicker' data-width='auto' multiple><optgroup label='Reels'>\n";
-        for(Reel reel : reels) {
-            reelBtn = reelBtn + "<option value='" + Integer.toString(reel.getID()) + "' >" + 
-                    reel.getTitle() + "</option>\n";
-        }
-        reelBtn = reelBtn + "</optgroup>";
-        reelBtn = reelBtn + "<optgroup label=''>";
-        reelBtn = reelBtn + "<option value='-1' > + New Reel</option>";
-        reelBtn = reelBtn + "</optgroup>";
-        reelBtn = reelBtn + "</select>\n";
         // use unicode for special chars 
         response.setCharacterEncoding("UTF-8");
         Writer out = response.getWriter();
@@ -110,10 +99,10 @@ public class SearchYouTube extends HttpServlet {
             out.write(video.getId());
             out.write("' allowfullscreen></iframe>");
             out.write("</div>");
-            out.write("<form id='newVideo' action=\'\' method=\'POST\'>");
-            out.write(reelBtn);
-            out.write("<input type=\'button\' value=\'Tag Video\' onclick=\"addVideo(\'" +
-                    title + "\', \'"+ video.getId() + "\')\"/>");
+            out.write("<form id='" + video.getId() + "' action=\'\' method=\'POST\'>");
+            out.write("<select></select>");
+            out.write("<input class=\'addVid\'type=\'button\' value=\'" + video.getId() + "\' name=\"" + 
+                    title + "\" style=\'display:none\'/>");
             out.write("</form>");
             out.write("</div>");
             out.write("</div>");

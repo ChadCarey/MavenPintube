@@ -77,10 +77,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="text-align:center">
+        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>  
+        </button>-->
         <h4 class="modal-title" id="myModalLabel">Searching Youtube</h4>
       </div>
       <div class="modal-body" style="max-height: 450px; overflow-y: auto">
           <div id="sBar"></div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-warning" onclick="saveTags()">Save Tags</button>
       </div>
     </div>
   </div>
@@ -89,6 +96,29 @@
   <div class="modal-dialog modal-lg">
     <div id="vidBody" class="modal-content">
       ...
+    </div>
+  </div>
+</div>
+<div class="modal fade bs-example-modal-sm" id="addReel" style="padding-top:10%"tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <!--<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h5 class="modal-title" id="myModalLabel">New Tag</h5>
+    </div>-->
+      <div class="modal-body">
+          <div class="input-group">
+          <input class="form-control" id="newTagName" placeholder="Tag Name" onkeyup=" if (event.keyCode === 13) {addTag();}" type="text">
+          <span class="input-group-btn">
+              <button type="button" class="btn btn-default" onclick="addTag()">Save Tag</button>
+          </span>
+        </div>
+        <!--<input type="text" id="newTag" autofocus/>-->
+      </div>
+        <!--<div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="addTag()">Save Tag</button>
+        </div>-->
     </div>
   </div>
 </div>

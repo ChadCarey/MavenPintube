@@ -117,10 +117,6 @@ public class MontageUserServlet extends HttpServlet {
                                 "style='text-align:center; color:black; text-decoration:none;'>");
                       out.write("<h3>" + reel.getTitle() + "</h3>");
                       out.write("<div class='embed-responsive embed-responsive-16by9'>");
-                     // out.write("<iframe class='embed-responsive-item' ");
-                     // out.write("src='//www.youtube.com/embed/");
-                     // out.write(video.getLink());
-                     // out.write("' allowfullscreen></iframe>");
                       out.write("</div>");
                       out.write("</a>");
                       out.write("</div>");
@@ -157,6 +153,7 @@ public class MontageUserServlet extends HttpServlet {
         
         if(userController.validLogin(username, password)) 
         {
+            username = Character.toUpperCase(username.charAt(0)) + username.substring(1);
             HttpSession session = request.getSession();
             session.setAttribute("user", username);
             System.out.println(request.getSession().getAttribute("user").toString());
