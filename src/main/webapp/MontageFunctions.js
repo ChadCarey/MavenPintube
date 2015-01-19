@@ -51,9 +51,9 @@ function addTag()
     var text = $("#newTagName").val();
     if (text !== "")
     {
-       var newOption = "<option value='0'>" + text + "</option>";
+       var newOption = "<option value='" + text+ "'>" + text + "</option>";
        var btn = reelBtn(newOption);
-       var tag = "<li style='display:none'><a onclick='0'>" + text + "</a></li>";
+       var tag = "<li style='display:none'><a name='" + text + "'onclick='0'>" + text + "</a></li>";
        $("#reelList").append(tag);
        refreshReelBtns(btn);
     }
@@ -97,15 +97,16 @@ function getUserReels()
                 // loop through data for Reels
                 for (var i = 0; i < reels.length; i++)
                 {
-                    $('#reelList').append( 
-                        '<li><a href="#" onclick="getUserVideos(' + reels[i].id + ')">' + 
+                    $('#reelList').append(
+                        '<li><a href="#" name="' + reels[i].id +
+                        '"onclick="getUserVideos(' + reels[i].id + ')">' + 
                         reels[i].name + '</a></li>');
                 
                 }
                 if (reels.length === 0)
                 {
                     $('#reelList').append( 
-                        '<li><a href="#" onclick="">' + 
+                        '<li><a href="#" name="" onclick="">' + 
                         'No Reels Available' + '</a></li>');
                 }
                 // add New Reel option
@@ -129,8 +130,11 @@ function saveTags()
             //            });
         
     });
-    document.getElementById("main").innerHTML = "<h2>Tagged!</h2>";
-    $('#searching').modal('hide');
+    //document.getElementById("main").innerHTML = "<h2>Tagged!</h2>";
+    
+    // wait a second before loading reels
+    setTimeout(function () {$('#searching').modal('hide'); }, 4000);
+    getUserReels();
 }
 function addVideo(videoTitle, videoID)
 {
@@ -141,10 +145,12 @@ function addVideo(videoTitle, videoID)
     if (reelTags !== "")
     {
         str += reelTags;
-        $.post(str,
-        function(data/*resulting data*/)
-        { 
-        } );
+        // use sync so it will wait
+        $.ajax({
+            type: 'POST',
+            url:str,
+            async:false         
+         });
     }
 }
 
@@ -171,13 +177,14 @@ function getTempReels()
        var tags = reels[i].getElementsByTagName("A")[0];
        var att = tags.getAttribute("onclick").split("");
        var num = "";
-       for(j = 0; j < att.length; j++)
-       {
+       //for(j = 0; j < att.length; j++)
+       //{
            // build id num
-           if (!isNaN(att[j]))
-               num = num + att[j];
-       }
+       //    if (!isNaN(att[j]))
+       //        num = num + att[j];
+       //}
        var text = $(tags).text();
+       num = $(tags).attr("name");
        if (num !== "")
        {
            arr.push({id:num, name: text});

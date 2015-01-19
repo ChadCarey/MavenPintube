@@ -93,6 +93,28 @@ public class Database {
             }
         }
         
+        public String addReel(String title) {
+            try {
+                System.out.println("Inserting new Reel into database");
+                sql = "INSERT IGNORE INTO category (category) VALUES ('"
+					+ title + "')";
+                        System.out.println(sql);
+			stmt.executeUpdate(sql);
+                System.out.println("Getting ID from response");
+                sql = "SELECT id FROM category WHERE category='" + title + "'";
+                ResultSet rs = stmt.executeQuery(sql);
+                System.out.println("Contains next: " + rs.next());
+                String categoryID = rs.getString("id");
+                System.out.println("ID: " + categoryID);
+                return categoryID;
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                System.out.println("ERROR 0");
+            }
+            return "ERROR 1";
+        }
+        
 	public void addVideo(Video userVideo)
 	{		
 		System.out.println("Adding video to database..");

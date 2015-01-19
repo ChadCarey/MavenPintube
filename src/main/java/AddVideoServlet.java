@@ -98,6 +98,12 @@ public class AddVideoServlet extends HttpServlet {
         for (String reelID : reelIDs)
         {
             System.out.println("reelID="+ reelID);
+            if (!isNumeric(reelID))
+            {
+                // new category
+                System.out.println(reelID);
+                reelID = database.addReel(reelID);
+            }
             database.addVideo(title, videoID, username, Integer.parseInt(reelID));
         }
         database.disconnect();
@@ -112,5 +118,9 @@ public class AddVideoServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    public static boolean isNumeric(String str)
+    {
+        // checks if a string is only a number
+        return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+    }
 }
