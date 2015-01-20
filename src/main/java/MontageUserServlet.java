@@ -80,18 +80,13 @@ public class MontageUserServlet extends HttpServlet {
                       out.write(video.getTitle());
                       out.write("\")' class='thumbnail videobox'" +
                                 "style='text-align:center; color:black; text-decoration:none;'>");
-                      out.write("<h3 class='vidTitle' style='white-space:nowrap;width:100%;overflow:hidden;text-overflow:ellipsis;'>" + video.getTitle() + "</h3>");
+                      out.write("<h3 class='vidTitle'>" + video.getTitle() + "</h3>");
                       out.write("<div class='embed-responsive embed-responsive-16by9'>");
                       out.write("<img src='http://img.youtube.com/vi/");
                       out.write(video.getLink());
                       out.write("/mqdefault.jpg' class='img-responsive' alt='");
                       out.write(video.getTitle());
-                      out.write("' style='margin:auto'/>");
-// out.write("<iframe class='embed-responsive-item' ");
-                      //out.write("src='//www.youtube.com/embed/");
-                      
-                      //out.write("' allowfullscreen></iframe>");
-                    
+                      out.write("' style='margin:auto'/>");         
                       out.write("</div>");
                       out.write("</a>");
                       out.write("</div>");

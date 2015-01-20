@@ -5,7 +5,8 @@
 
 body
 {
-    //background-color: teal;
+    //background-color: #F8F8F8;
+    background: linear-gradient(#fff 0,#f8f8f8 100%);
 }
 
 #main

@@ -26,11 +26,6 @@ function search()
         	$('#sBar').replaceWith('<div id="sBar" style="text-align:center; margin:auto">'+data+'</div>');
                 var btn = reelBtn(null);
                 refreshReelBtns(btn);
-                // to-do: put div class place-holders in java
-                //        and build buttons here in javascript
-                //        where they can be easily replaced, 
-                //        re-built, and re-rendered with new
-                //        categories
         });
     } );
 }
@@ -89,7 +84,6 @@ function getUserReels()
     {
         document.getElementById('main').innerHTML = data;
         $(document).ready( function() {
-          //  alert("run");
                 // change list menu
                 var reels =  parseReel(); 
                 $('#reelList').empty();
@@ -109,10 +103,6 @@ function getUserReels()
                         '<li><a href="#" name="" onclick="">' + 
                         'No Reels Available' + '</a></li>');
                 }
-                // add New Reel option
-               /* $('#reelList').append(
-                        '<li class="divider"></li>' +
-                        '<li><a href="#">+ Add Reel</a></li>');*/
                 // take down loading after everything is ready to go
                 $('#searching').modal('hide');
         });
@@ -124,11 +114,7 @@ function saveTags()
     {
         var vidTitle = $(this).attr("name");
         var vidID = $(this).attr("value");
-        //$('select option:selected').each(function() 
-          //              {
-                            addVideo (vidTitle, vidID);// + $(this).text());
-            //            });
-        
+        addVideo (vidTitle, vidID);
     });
     //document.getElementById("main").innerHTML = "<h2>Tagged!</h2>";
     
@@ -167,10 +153,6 @@ function playVideo(link, title)
          $('#myLargeModalLabel').text(title);
          $('#vidBody').replaceWith(window);
          $('#vid').modal('show');
-         //$(document).on('hide.bs.modal','#fiv', function () {
-         //       alert('hide');
- //Do stuff here
-//});
          $('#vid').on('hidden.bs.modal', function () {
            // restore default content on close
            //alert("modal hidden");
@@ -186,12 +168,6 @@ function getTempReels()
        var tags = reels[i].getElementsByTagName("A")[0];
        var att = tags.getAttribute("onclick").split("");
        var num = "";
-       //for(j = 0; j < att.length; j++)
-       //{
-           // build id num
-       //    if (!isNaN(att[j]))
-       //        num = num + att[j];
-       //}
        var text = $(tags).text();
        num = $(tags).attr("name");
        if (num !== "")
