@@ -79,7 +79,7 @@ public class MontageUserServlet extends HttpServlet {
                       out.write("\", \"");
                       out.write(video.getTitle());
                       out.write("\")' class='thumbnail videobox'" +
-                                "style='text-align:center; color:black; text-decoration:none;'>");
+                                ">");
                       out.write("<h3 class='vidTitle'>" + video.getTitle() + "</h3>");
                       out.write("<div class='embed-responsive embed-responsive-16by9'>");
                       out.write("<img src='http://img.youtube.com/vi/");
