@@ -28,11 +28,11 @@
         <p>${incorrect}</p>
         <form action="MontageUserServlet" method="POST">
         <div class="input-group" style="width:330px; padding: 20px">
-  			<span class="input-group-addon">Username</span>
+  			<div style="width:90px" class="input-group-addon">Username</div>
   			<input type="text" class="form-control" name="username" autofocus/>
 		</div>
 		<div class="input-group" style="width:330px; padding: 0px 20px">
-  			<span class="input-group-addon">Password</span>
+  			<div style="width:90px" class="input-group-addon">Password</div>
   			<input type="password" class="form-control" name="password"/>
 		</div>
      <!--       Username: <input name="username" type="text"/>

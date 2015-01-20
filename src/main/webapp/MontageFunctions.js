@@ -167,6 +167,15 @@ function playVideo(link, title)
          $('#myLargeModalLabel').text(title);
          $('#vidBody').replaceWith(window);
          $('#vid').modal('show');
+         //$(document).on('hide.bs.modal','#fiv', function () {
+         //       alert('hide');
+ //Do stuff here
+//});
+         $('#vid').on('hidden.bs.modal', function () {
+           // restore default content on close
+           //alert("modal hidden");
+           $('#vidBody').replaceWith('<div id="vidBody" class="modal-content">...</div>');
+           });
 }
 function getTempReels()
 {

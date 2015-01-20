@@ -90,7 +90,7 @@ public class SearchYouTube extends HttpServlet {
         	title = title.replace("\"", "");
         	title = title.replace("\'", "");
                 out.write("<div class='row'>");
-        	out.write("<div class='col-xs-6 col-md-6'>");
+        	out.write("<div class='col-xs-9 col-md-9'>");
         	out.write("<div class='thumbnail' style='text-align:center'>");
         	out.write("<h4>" + video.getTitle() + "</h4>");
         	out.write("<div class='embed-responsive embed-responsive-16by9'>");
