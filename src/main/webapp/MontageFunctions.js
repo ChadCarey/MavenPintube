@@ -20,11 +20,17 @@ function search()
     {'search' : search},
     function(data/*resulting data*/,status,xhr/*xmlobject*/)
     {
+        //document.getElementById("main").innerHTML = data;
         $(document).ready( function() {
                 $('.modal-footer').show();
         	$('#sBar').replaceWith('<div id="sBar" style="text-align:center; margin:auto">'+data+'</div>');
                 var btn = reelBtn(null);
                 refreshReelBtns(btn);
+                // to-do: put div class place-holders in java
+                //        and build buttons here in javascript
+                //        where they can be easily replaced, 
+                //        re-built, and re-rendered with new
+                //        categories
         });
     } );
 }
@@ -83,6 +89,7 @@ function getUserReels()
     {
         document.getElementById('main').innerHTML = data;
         $(document).ready( function() {
+          //  alert("run");
                 // change list menu
                 var reels =  parseReel(); 
                 $('#reelList').empty();
@@ -93,7 +100,8 @@ function getUserReels()
                     $('#reelList').append(
                         '<li><a href="#" name="' + reels[i].id +
                         '"onclick="getUserVideos(' + reels[i].id + ')">' + 
-                        reels[i].name + '</a></li>');           
+                        reels[i].name + '</a></li>');
+                
                 }
                 if (reels.length === 0)
                 {
@@ -101,6 +109,10 @@ function getUserReels()
                         '<li><a href="#" name="" onclick="">' + 
                         'No Reels Available' + '</a></li>');
                 }
+                // add New Reel option
+               /* $('#reelList').append(
+                        '<li class="divider"></li>' +
+                        '<li><a href="#">+ Add Reel</a></li>');*/
                 // take down loading after everything is ready to go
                 $('#searching').modal('hide');
         });
@@ -108,14 +120,15 @@ function getUserReels()
 }
 function saveTags()
 {
-    $('#myModalLabel').text("Tagging Videos");
-    $('.modal-footer').hide();
-    $('#sBar').replaceWith(sBar);
     $('.addVid').each(function()
     {
         var vidTitle = $(this).attr("name");
         var vidID = $(this).attr("value");
-        addVideo (vidTitle, vidID);
+        //$('select option:selected').each(function() 
+          //              {
+                            addVideo (vidTitle, vidID);// + $(this).text());
+            //            });
+        
     });
     //document.getElementById("main").innerHTML = "<h2>Tagged!</h2>";
     
@@ -164,7 +177,12 @@ function getTempReels()
        var tags = reels[i].getElementsByTagName("A")[0];
        var att = tags.getAttribute("onclick").split("");
        var num = "";
-   
+       //for(j = 0; j < att.length; j++)
+       //{
+           // build id num
+       //    if (!isNaN(att[j]))
+       //        num = num + att[j];
+       //}
        var text = $(tags).text();
        num = $(tags).attr("name");
        if (num !== "")
