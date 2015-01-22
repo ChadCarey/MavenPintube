@@ -82,7 +82,7 @@ public class Database {
                 System.out.println(sql);
                 ResultSet rs = stmt.executeQuery(sql);
                 System.out.println("Getting ID from response");
-                System.out.println("Cointans next: " + rs.next());
+                System.out.println("Contains next: " + rs.next());
                 int userID = rs.getInt("id");
                 System.out.println("ID: " + userID);
                 addVideo(new Video(userID, title, videoID, categoryID));

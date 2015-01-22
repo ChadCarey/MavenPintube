@@ -34,8 +34,8 @@
         <span class="icon-bar"></span>
       </button>
         <a class="navbar-brand" href="#" onclick="getUserReels()">Welcome</a>
-      <div class="btn-group" style="float:left">
-      <button type="button" class="btn btn-warning dropdown-toggle navbar-btn" data-toggle="dropdown">
+      <div class="btn-group navbar-left">
+      <button type="button" class="btn btn-warning dropdown-toggle navbar-btn navbar-left" data-toggle="dropdown">
     ${user}<span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
@@ -56,7 +56,7 @@
       </div>
 <!--     	<input type="button" class="btn btn-default navbar-btn" onclick="getUserReels()" value="My Reels"/>-->
         <!-- Split button -->
-<div class="btn-group navbar-btn">
+<div class="btn-group navbar-btn navbar-left">
   <button type="button" class="btn btn-default" onclick="getUserReels()">My Reels</button>
   <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     <span class="caret"></span>
@@ -66,7 +66,12 @@
       <li><a href="#">ERROR - could not load Reels</a></li>
   </ul>
 </div>
+        <div class="navbar-left">
+            <!--<h3><span class="label label-default navbar-left" id="catLabel"></span></h3>-->
+    <p class="navbar-text"><span class="label label-default" id="catLabel"></span></p>
+            </div>
     </div><!-- /.navbar-collapse -->
+    
   </div><!-- /.container-fluid -->
 </nav>
         <header>

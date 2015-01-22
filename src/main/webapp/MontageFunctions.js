@@ -60,6 +60,7 @@ function getUserVideos(category)
     $('#sBar').replaceWith(sBar);
     $('.modal-footer').hide();
     $('#searching').modal('show');
+    var name = $("a[name="+ category +"]").text();
     $.get('MontageUserServlet',
     {'req' : 'getUserVideos',
      'reel' : category},
@@ -68,6 +69,7 @@ function getUserVideos(category)
         document.getElementById("main").innerHTML = data;
         $(document).ready( function() {
         	$('#searching').modal('hide');
+                $('#catLabel').text(name);
         });
     } );
 }
@@ -78,6 +80,7 @@ function getUserReels()
     $('#sBar').replaceWith(sBar);
     $('.modal-footer').hide();
     $('#searching').modal('show');
+    $('#catLabel').text("");
     $.get('MontageUserServlet',
     {'req' : 'getUserReels'},
     function(data/*resulting data*/)
