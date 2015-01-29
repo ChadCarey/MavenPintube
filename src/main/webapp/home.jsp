@@ -68,7 +68,7 @@
 </div>
         <div class="navbar-left">
             <!--<h3><span class="label label-default navbar-left" id="catLabel"></span></h3>-->
-    <p class="navbar-text"><span class="label label-default" id="catLabel"></span></p>
+    <p class="navbar-text noselect"><span class="label label-default" id="catLabel"></span></p>
             </div>
     </div><!-- /.navbar-collapse -->
     
